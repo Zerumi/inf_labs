@@ -1,0 +1,27 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+
+group = 'io.github.zerumi'
+version = '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'io.github.zerumi.Main'
+}
+
+run {
+    standardInput = System.in
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
