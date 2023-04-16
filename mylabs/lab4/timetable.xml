@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schedule>
+    <day name="Среда">
+        <subject type="Лабораторная">
+            <time>13:30-15:00</time>
+            <week>четная</week>
+            <name>Программирование</name>
+            <teacher>Байрамова Хумай Бахруз Кызы</teacher>
+            <place>Ауд. 1338 (Бывш. 381), Кронверкский пр., д.49, лит.А</place>
+            <weeks>2, 4, 6, 8, 10, 12, 14, 16</weeks>
+            <mode>Очно - дистанционный</mode>
+        </subject>
+        <subject type="Лабораторная">
+            <time>13:30-15:00</time>
+            <week>нечетная</week>
+            <name>Основы профессиональной деятельности</name>
+            <teacher>Афанасьев Дмитрий Борисович</teacher>
+            <place>Ауд. 2435/5 (Бывш. 431Г), Кронверкский пр., д.49, лит.А</place>
+            <weeks>1, 3, 7, 11, 13, 15, 17, 18</weeks>
+            <mode>Очный</mode>
+        </subject>
+        <subject type="Лабораторная">
+            <time>15:20-16:50</time>
+            <week>четная</week>
+            <name>Программирование</name>
+            <teacher>Байрамова Хумай Бахруз Кызы</teacher>
+            <place>Ауд. 1338 (Бывш. 381), Кронверкский пр., д.49, лит.А</place>
+            <weeks>2, 4, 6, 8, 10, 12, 14, 16</weeks>
+            <mode>Очно - дистанционный</mode>
+        </subject>
+        <subject type="Лабораторная">
+            <time>15:20-16:50</time>
+            <week>нечетная</week>
+            <name>Основы профессиональной деятельности</name>
+            <teacher>Афанасьев Дмитрий Борисович</teacher>
+            <place>Ауд. 2435/5 (Бывш. 431Г), Кронверкский пр., д.49, лит.А</place>
+            <weeks>1, 3, 7, 11, 13, 15, 17, 18</weeks>
+            <mode>Очный</mode>
+        </subject>
+    </day>
+</schedule>
