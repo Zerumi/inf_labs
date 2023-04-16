@@ -1,0 +1,7 @@
+[{"name":"?xml","attributes":{"encoding":"utf-8"},"text":"<schedule>
+    <day name="Среда">
+        <subject type="Лабораторная">
+            <time>13:30-15:00","children":[{"name":"schedule","attributes":{},"text":"<day name="Среда">
+        <subject type="Лабораторная">
+            <time>13:30-15:00","children":[{"name":"day","attributes":{},"text":"<subject type="Лабораторная">
+            <time>13:30-15:0","children":[{"name":"subject","attributes":{},"text":"<time>13:30-15:","children":[{"name":"time","attributes":{},"text":"13:30-15","children":["13:30-1"]}]}]}]}]}]
