@@ -1,6 +1,7 @@
-def parse_xml(xml_string, enable_recursion_search=True):
+# я ненавижу пайтон
+def parse_xml(xml_string):
     """
-    Парсит XML-строку в дерево объектов Element.
+    Парсит XML-строку в коллекцию элементов.
     """
 
     # Список для хранения дочерних элементов
@@ -30,7 +31,11 @@ def parse_xml(xml_string, enable_recursion_search=True):
             tag_name = xml_string[tag_name_start:tag_name_end]
 
             # Ищем закрывающий тег
-            end_tag_start = xml_string.find('</' + tag_name + '>')
+            end_tag_start = xml_string.find('</' + tag_name + '>', tag_name_start + 1)
+            test_for_duplicate = xml_string.find('<' + tag_name + '>', tag_name_start + 1)
+            while test_for_duplicate < end_tag_start and test_for_duplicate != -1:
+                end_tag_start = xml_string.find('</' + tag_name + '>', end_tag_start + 1)
+                test_for_duplicate = xml_string.find('<' + tag_name + '>', test_for_duplicate + 1)
             end_tag_end = end_tag_start + len(tag_name) + 3
 
             # Ищем атрибуты тега
@@ -81,12 +86,15 @@ def parse_xml(xml_string, enable_recursion_search=True):
                 xml_string_nextstart = xml_string.find('<', end_tag_end + 1)
                 xml_string_nextstart_end = xml_string.find('>', xml_string_nextstart + 1)
                 # вычисляем конец тега
-                # todo: совпадающие вложенные теги
                 xml_string_nextstart_nameend = xml_string.find(' ', xml_string_nextstart + 1)
                 if xml_string_nextstart_nameend == -1 or xml_string_nextstart_nameend > xml_string_nextstart_end:
                     xml_string_nextstart_nameend = xml_string_nextstart_end
                 tagname = xml_string[xml_string_nextstart + 1:xml_string_nextstart_nameend]
-                xml_closetagname= xml_string.find('</' + tagname + '>', xml_string_nextstart_end + 1)
+                xml_closetagname = xml_string.find('</' + tagname + '>', xml_string_nextstart_end + 1)
+                test_for_duplicate = xml_string.find('<' + tagname + '>', xml_string_nextstart_end + 1)
+                while test_for_duplicate < xml_closetagname and test_for_duplicate != -1:
+                    xml_closetagname = xml_string.find('</' + tagname + '>', xml_closetagname + 1)
+                    test_for_duplicate = xml_string.find('<' + tagname + '>', test_for_duplicate + 1)
                 xml_string_nextstop = xml_closetagname + len(tagname) + 3
                 # Проверяем, что это не окончание какого-то тега
                 if xml_string[xml_string_nextstart + 1] == '/':
@@ -110,5 +118,44 @@ def find_nth(haystack, needle, n):
     return start
 
 
-json_string = parse_xml(open('/Users/zerumi/Documents/inf_labs/mylabs/lab4/timetable.xml').read())
-print(json_string)
+# Переводит коллекцию элементов в JSON-формат. Часть информации безуспешно теряется =(
+def elements_to_json_str(elements, tabcount=0, first_element=True, complicated_array=True):
+    result = ''
+    if len(elements) != 1 and complicated_array:
+        result += '\t' * tabcount + '\"' + elements[0]['name'] + '\" : [\n'
+        first_element = True
+    for element in elements:
+        remove_comma = False
+        if first_element:
+            result += '\t' * tabcount + '{\n'
+            first_element = False
+            tabcount += 1
+        elif complicated_array:
+            result += '\t' * tabcount + '\"' + element['name'] + '\": {\n'
+            tabcount += 1
+        for atr in element['attributes']:
+            result += '\t' * tabcount + '\"' + atr + '\":\"' + element['attributes'][atr] + '\",\n'
+        if element['text']:
+            remove_comma = True
+            result += '\t' * tabcount + '\"' + element['name'] + '\":\"' + element['text'] + '\",\n'
+        if remove_comma and complicated_array:
+            result = result.rstrip(',\n')
+            result += '\n'
+        if element['children']:
+            if element['children'][0]['children'] or element['children'][0]['attributes']:
+                result += elements_to_json_str(element['children'], tabcount, False)
+            else:
+                result += elements_to_json_str(element['children'], tabcount, False, False)
+        if complicated_array:
+            tabcount -= 1
+            result += '\t' * tabcount + '},\n'
+    result = result.rstrip(',\n')
+    result += '\n'
+    if len(elements) != 1 and complicated_array:
+        result += '\t' * tabcount + ']\n'
+    return result
+
+
+elements_from_xml = parse_xml(open('input.xml').read())
+print(elements_from_xml)
+open('output.json', mode='w').write(elements_to_json_str(elements_from_xml))
