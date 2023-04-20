@@ -1,4 +1,5 @@
 # я ненавижу пайтон
+# РЕВОЛЮЦИЯ В СФЕРЕ ПАРСИНГА!!!
 def parse_xml(xml_string):
     """
     Парсит XML-строку в коллекцию элементов.
@@ -119,43 +120,104 @@ def find_nth(haystack, needle, n):
 
 
 # Переводит коллекцию элементов в JSON-формат. Часть информации безуспешно теряется =(
-def elements_to_json_str(elements, tabcount=0, first_element=True, complicated_array=True):
+def elements_to_json_str(elements, tab_count=0, first_element=True, complicated_array=True):
     result = ''
     if len(elements) != 1 and complicated_array:
-        result += '\t' * tabcount + '\"' + elements[0]['name'] + '\" : [\n'
+        result += '\t' * tab_count + '\"' + elements[0]['name'] + '\" : [\n'
         first_element = True
     for element in elements:
         remove_comma = False
         if first_element:
-            result += '\t' * tabcount + '{\n'
+            result += '\t' * tab_count + '{\n'
             first_element = False
-            tabcount += 1
+            tab_count += 1
         elif complicated_array:
-            result += '\t' * tabcount + '\"' + element['name'] + '\": {\n'
-            tabcount += 1
+            result += '\t' * tab_count + '\"' + element['name'] + '\": {\n'
+            tab_count += 1
         for atr in element['attributes']:
-            result += '\t' * tabcount + '\"' + atr + '\":\"' + element['attributes'][atr] + '\",\n'
+            result += '\t' * tab_count + '\"' + atr + '\":\"' + element['attributes'][atr] + '\",\n'
         if element['text']:
             remove_comma = True
-            result += '\t' * tabcount + '\"' + element['name'] + '\":\"' + element['text'] + '\",\n'
+            result += '\t' * tab_count + '\"' + element['name'] + '\":\"' + element['text'] + '\",\n'
         if remove_comma and complicated_array:
             result = result.rstrip(',\n')
             result += '\n'
         if element['children']:
             if element['children'][0]['children'] or element['children'][0]['attributes']:
-                result += elements_to_json_str(element['children'], tabcount, False)
+                result += elements_to_json_str(element['children'], tab_count, False)
             else:
-                result += elements_to_json_str(element['children'], tabcount, False, False)
+                result += elements_to_json_str(element['children'], tab_count, False, False)
         if complicated_array:
-            tabcount -= 1
-            result += '\t' * tabcount + '},\n'
+            tab_count -= 1
+            result += '\t' * tab_count + '},\n'
     result = result.rstrip(',\n')
     result += '\n'
     if len(elements) != 1 and complicated_array:
-        result += '\t' * tabcount + ']\n'
+        result += '\t' * tab_count + ']\n'
     return result
+
+
+def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
+    result = ''
+    is_array = False
+    union = union_by_name(elements_xml)
+    if len(union) < len(elements_xml):
+        is_array = True
+    if is_first_iter:
+        result += '{\n'
+        tab_count += 1
+    if is_array:
+        for union_array_index in union:
+            result += '\t' * tab_count + '\"' + union_array_index + '\" : [\n'
+            for element in union[union_array_index]:
+                result += '\t' * tab_count + '{\n'
+                tab_count += 1
+                for atr in element['attributes']:
+                    result += '\t' * tab_count + '\"' + atr + '\":\"' + element['attributes'][atr] + '\",\n'
+                if element['text']:
+                    result += '\t' * tab_count + '\"' + element['name'] + '\":\"' + element['text'] + '\",\n'
+                if element['children']:
+                    result += to_json_str(element['children'], tab_count, False)
+                if is_array:
+                    tab_count -= 1
+                    result += '\t' * tab_count + '},\n'
+            result = result.rstrip(',\n')
+            result += '\n'
+            result += '\t' * tab_count + ']\n'
+    else:
+        for element in elements_xml:
+            if len(element['children']) > 1:
+                result += '\t' * tab_count + '\"' + element['name'] + '\": {\n'
+                tab_count += 1
+            for atr in element['attributes']:
+                result += '\t' * tab_count + '\"' + atr + '\":\"' + element['attributes'][atr] + '\",\n'
+            if element['text']:
+                result += '\t' * tab_count + '\"' + element['name'] + '\":\"' + element['text'] + '\",\n'
+            if element['children']:
+                result += to_json_str(element['children'], tab_count, False)
+            if len(element['children']) > 1:
+                tab_count -= 1
+                result += '\t' * tab_count + '},\n'
+        result = result.rstrip(',\n')
+        result += '\n'
+    if is_first_iter:
+        result += '}'
+    return result
+
+
+def union_by_name(list_data):
+    result_dict = {}
+
+    for value in list_data:
+        name = value["name"]
+        if name in result_dict:
+            result_dict[name].append(value)
+        else:
+            result_dict[name] = [value]
+
+    return result_dict
 
 
 elements_from_xml = parse_xml(open('input.xml').read())
 print(elements_from_xml)
-open('output.json', mode='w').write(elements_to_json_str(elements_from_xml))
+open('output.json', mode='w').write(to_json_str(elements_from_xml))
