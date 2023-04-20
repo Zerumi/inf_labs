@@ -119,44 +119,6 @@ def find_nth(haystack, needle, n):
     return start
 
 
-# Переводит коллекцию элементов в JSON-формат. Часть информации безуспешно теряется =(
-def elements_to_json_str(elements, tab_count=0, first_element=True, complicated_array=True):
-    result = ''
-    if len(elements) != 1 and complicated_array:
-        result += '\t' * tab_count + '\"' + elements[0]['name'] + '\" : [\n'
-        first_element = True
-    for element in elements:
-        remove_comma = False
-        if first_element:
-            result += '\t' * tab_count + '{\n'
-            first_element = False
-            tab_count += 1
-        elif complicated_array:
-            result += '\t' * tab_count + '\"' + element['name'] + '\": {\n'
-            tab_count += 1
-        for atr in element['attributes']:
-            result += '\t' * tab_count + '\"' + atr + '\":\"' + element['attributes'][atr] + '\",\n'
-        if element['text']:
-            remove_comma = True
-            result += '\t' * tab_count + '\"' + element['name'] + '\":\"' + element['text'] + '\",\n'
-        if remove_comma and complicated_array:
-            result = result.rstrip(',\n')
-            result += '\n'
-        if element['children']:
-            if element['children'][0]['children'] or element['children'][0]['attributes']:
-                result += elements_to_json_str(element['children'], tab_count, False)
-            else:
-                result += elements_to_json_str(element['children'], tab_count, False, False)
-        if complicated_array:
-            tab_count -= 1
-            result += '\t' * tab_count + '},\n'
-    result = result.rstrip(',\n')
-    result += '\n'
-    if len(elements) != 1 and complicated_array:
-        result += '\t' * tab_count + ']\n'
-    return result
-
-
 def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
     result = ''
     is_array = False
@@ -168,22 +130,31 @@ def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
         tab_count += 1
     if is_array:
         for union_array_index in union:
-            result += '\t' * tab_count + '\"' + union_array_index + '\" : [\n'
+            matched_non_single_element = len(union[union_array_index]) > 1
+            if matched_non_single_element:
+                result += '\t' * tab_count + '\"' + union_array_index + '\" : [\n'
             for element in union[union_array_index]:
-                result += '\t' * tab_count + '{\n'
-                tab_count += 1
+                if matched_non_single_element:
+                    result += '\t' * tab_count + '{\n'
+                    tab_count += 1
                 for atr in element['attributes']:
                     result += '\t' * tab_count + '\"' + atr + '\":\"' + element['attributes'][atr] + '\",\n'
                 if element['text']:
                     result += '\t' * tab_count + '\"' + element['name'] + '\":\"' + element['text'] + '\",\n'
                 if element['children']:
                     result += to_json_str(element['children'], tab_count, False)
-                if is_array:
+                if matched_non_single_element:
+                    result = result.rstrip(',\n')
+                    result += '\n'
                     tab_count -= 1
                     result += '\t' * tab_count + '},\n'
-            result = result.rstrip(',\n')
-            result += '\n'
-            result += '\t' * tab_count + ']\n'
+            if matched_non_single_element:
+                result = result.rstrip(',\n')
+                result += '\n'
+            if len(union[union_array_index]) > 1:
+                result += '\t' * tab_count + '],\n'
+        result = result.rstrip(',\n')
+        result += '\n'
     else:
         for element in elements_xml:
             if len(element['children']) > 1:
