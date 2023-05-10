@@ -133,6 +133,7 @@ def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
             matched_non_single_element = len(union[union_array_index]) > 1
             if matched_non_single_element:
                 result += '\t' * tab_count + '\"' + union_array_index + '\" : [\n'
+                tab_count += 1
             for element in union[union_array_index]:
                 if matched_non_single_element:
                     result += '\t' * tab_count + '{\n'
@@ -152,6 +153,7 @@ def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
                 result = result.rstrip(',\n')
                 result += '\n'
             if len(union[union_array_index]) > 1:
+                tab_count -= 1
                 result += '\t' * tab_count + '],\n'
         result = result.rstrip(',\n')
         result += '\n'
@@ -172,7 +174,7 @@ def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
         result = result.rstrip(',\n')
         result += '\n'
     if is_first_iter:
-        result += '}'
+        result += '}\n'
     return result
 
 

@@ -4,45 +4,32 @@ import re
 def parse_xml(xml_string):
     root_pattern = re.compile(r'<(\w+)(.*?)>(.*?)</\1>', re.DOTALL)
     attr_pattern = re.compile(r'(\w+)="([^"]+)"')
-    children_pattern = re.compile(r'<(\w+)(.*?)>(.*?)</\1>', re.DOTALL)
+    xml_string = xml_string.strip()
 
-    def parse_node_array(node_string):
-        node_match = root_pattern.match(node_string)
-        result = []
-        if node_match:
-            tag_name = node_match.group(1)
-            attributes = dict(attr_pattern.findall(node_match.group(2)))
-            text = ''
-            children = parse_node_array(node_match.group(3).strip())
-            if len(children) == 0:
-                text = node_match.group(3)
-            result.append({'name': tag_name, 'attributes': attributes, 'text': text, 'children': children})
-            cursor = node_match.span()[1]
-            while cursor < len(node_string):
-                temp_count = len(node_string[cursor::])
-                node_match = root_pattern.match(node_string[cursor::].lstrip())
-                if node_match:
-                    tag_name = node_match.group(1)
-                    attributes = dict(attr_pattern.findall(node_match.group(2)))
-                    text = ''
-                    children = parse_node_array(node_match.group(3).strip())
-                    if len(children) == 0:
-                        text = node_match.group(3)
-                    result.append({'name': tag_name, 'attributes': attributes, 'text': text, 'children': children})
-                    cursor += node_match.span()[1] + temp_count - len(node_string[cursor::].lstrip())
-        return result
-
-    root_match = root_pattern.match(xml_string)
-    if root_match:
-        tag_name = root_match.group(1)
-        attributes = dict(attr_pattern.findall(root_match.group(2)))
+    node_match = root_pattern.match(xml_string)
+    result = []
+    if node_match:
+        tag_name = node_match.group(1)
+        attributes = dict(attr_pattern.findall(node_match.group(2)))
         text = ''
-        children = parse_node_array(root_match.group(3).strip())
-        if children is None:
-            text = root_match.group(3)
-        return {'name': tag_name, 'attributes': attributes, 'text': text, 'children': children}
-    else:
-        return None
+        children = parse_xml(node_match.group(3).strip())
+        if len(children) == 0:
+            text = node_match.group(3)
+        result.append({'name': tag_name, 'attributes': attributes, 'text': text, 'children': children})
+        cursor = node_match.span()[1]
+        while cursor < len(xml_string):
+            temp_count = len(xml_string[cursor::])
+            node_match = root_pattern.match(xml_string[cursor::].lstrip())
+            if node_match:
+                tag_name = node_match.group(1)
+                attributes = dict(attr_pattern.findall(node_match.group(2)))
+                text = ''
+                children = parse_xml(node_match.group(3).strip())
+                if len(children) == 0:
+                    text = node_match.group(3)
+                result.append({'name': tag_name, 'attributes': attributes, 'text': text, 'children': children})
+                cursor += node_match.span()[1] + temp_count - len(xml_string[cursor::].lstrip())
+    return result
 
 
 def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
@@ -59,6 +46,7 @@ def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
             matched_non_single_element = len(union[union_array_index]) > 1
             if matched_non_single_element:
                 result += '\t' * tab_count + '\"' + union_array_index + '\" : [\n'
+                tab_count += 1
             for element in union[union_array_index]:
                 if matched_non_single_element:
                     result += '\t' * tab_count + '{\n'
@@ -78,6 +66,7 @@ def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
                 result = result.rstrip(',\n')
                 result += '\n'
             if len(union[union_array_index]) > 1:
+                tab_count -= 1
                 result += '\t' * tab_count + '],\n'
         result = result.rstrip(',\n')
         result += '\n'
@@ -98,7 +87,7 @@ def to_json_str(elements_xml, tab_count=0, is_first_iter=True):
         result = result.rstrip(',\n')
         result += '\n'
     if is_first_iter:
-        result += '}'
+        result += '}\n'
     return result
 
 
@@ -118,6 +107,6 @@ def union_by_name(list_data):
 xml_str = open('input.xml').read()
 parsed_xml = parse_xml(xml_str)
 print(parsed_xml)
-# json_string = to_json_str(parsed_xml)
-# print(json_string)
-# open('output_add2.json', 'w').write(json_string)
+json_string = to_json_str(parsed_xml)
+print(json_string)
+open('output_add2.json', 'w').write(json_string)
