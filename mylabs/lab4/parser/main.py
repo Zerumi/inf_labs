@@ -191,6 +191,7 @@ def union_by_name(list_data):
     return result_dict
 
 
-elements_from_xml = parse_xml(open('input.xml').read())
-print(elements_from_xml)
-open('output.json', mode='w').write(to_json_str(elements_from_xml))
+def main():
+    elements_from_xml = parse_xml(open('input.xml').read())
+    # print(elements_from_xml)
+    open('output.json', mode='w').write(to_json_str(elements_from_xml))

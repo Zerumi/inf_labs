@@ -104,9 +104,10 @@ def union_by_name(list_data):
     return result_dict
 
 
-xml_str = open('input.xml').read()
-parsed_xml = parse_xml(xml_str)
-print(parsed_xml)
-json_string = to_json_str(parsed_xml)
-print(json_string)
-open('output_add2.json', 'w').write(json_string)
+def main():
+    xml_str = open('input.xml').read()
+    parsed_xml = parse_xml(xml_str)
+    # print(parsed_xml)
+    json_string = to_json_str(parsed_xml)
+    # print(json_string)
+    open('output_add2.json', 'w').write(json_string)
