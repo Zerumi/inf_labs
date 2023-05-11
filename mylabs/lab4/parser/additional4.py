@@ -132,7 +132,7 @@ def to_markdown_str(elements_xml, current_head_count=1):
             index = 1
             for element in union[union_array_index]:
                 if matched_non_single_element:
-                    result += union_array_index + str(index) + '\n\n'  # start complex element
+                    result += '\n' + union_array_index + str(index) + '\n\n'  # start complex element
                     result += '|||\n'
                     result += '|---|---|\n'
                 for atr in element['attributes']:
