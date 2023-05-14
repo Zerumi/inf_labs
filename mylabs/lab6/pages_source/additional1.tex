@@ -1,0 +1,707 @@
+\documentclass{article}
+\usepackage[a2paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{colortbl}
+
+\begin{document}
+\begin{tabularx}{\textwidth}{
+|>{\centering\arraybackslash}L % 1 Периоды
+|>{\centering\arraybackslash}L % 2 Ряды
+|>{\centering\arraybackslash}L % 3 1 группа
+>{\centering\arraybackslash}L % 4 1-2
+|>{\centering\arraybackslash}L % 5 2 группа
+>{\centering\arraybackslash}L % 6 2-2
+|>{\centering\arraybackslash}L % 7 3 группа
+>{\centering\arraybackslash}L % 8 3-2
+|>{\centering\arraybackslash}L % 9 4 группа
+>{\centering\arraybackslash}L % 10 4-2
+|>{\centering\arraybackslash}L % 11 5 группа
+>{\centering\arraybackslash}L % 12 5-2
+|>{\centering\arraybackslash}L % 13 6 группа
+>{\centering\arraybackslash}L % 14 6-2
+|>{\centering\arraybackslash}L % 15 7 группа
+>{\centering\arraybackslash}L % 16 7-2
+|>{\centering\arraybackslash}L % 17 8 группа, 1й элемент
+>{\centering\arraybackslash}L % 18 8-1-2
+|>{\centering\arraybackslash}L % 19 8 группа, 2й элемент
+>{\centering\arraybackslash}L % 20 8-2-2
+|>{\centering\arraybackslash}L % 21 8 группа, 3й элемент
+>{\centering\arraybackslash}L % 22 8-3-2
+|}
+\cline{1-22}
+\multirow{2}{*}{Периоды} % 1
+& \multirow{2}{*}{Ряды} % 2
+& \multicolumn{20}{c|}{Группы элементов} % 22
+\\ 
+\cline{3-22}
+  % 1
+&  % 2
+& \multicolumn{2}{c|}{I} % 4
+& \multicolumn{2}{c|}{II} % 6
+& \multicolumn{2}{c|}{III} % 8
+& \multicolumn{2}{c|}{IV} % 10
+& \multicolumn{2}{c|}{V} % 12
+& \multicolumn{2}{c|}{VI} % 14
+& \multicolumn{2}{c|}{VII} % 16
+& \multicolumn{6}{c|}{VIII} % 22
+\\
+\cline{1-22}
+\multirow{4}{*}{1} % 1 период
+& \multirow{4}{*}{1} % 1 ряд
+& \multirow{2}{*}{H} % H
+& \cellcolor{pink} 1 % (H) 1
+& \multicolumn{12}{c|}{\multirow{4}{*}{Периодическая система элементов Д.И.Менделеева}} % 16
+& \multirow{2}{*}{He} % 17
+& \cellcolor{pink} 2 % 18
+& \multicolumn{4}{c|}{}
+\\
+  
+&  
+&
+& \cellcolor{pink} 1.00794 % H
+& \multicolumn{12}{c|}{} 
+&  
+& \cellcolor{pink} 4.0026
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Hydrogenium} 
+& \multicolumn{12}{c|}{} 
+& \multicolumn{2}{c|}{Helium} 
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Водород} 
+& \multicolumn{12}{c|}{} 
+& \multicolumn{2}{c|}{Гелий} 
+& \multicolumn{4}{c|}{}
+\\ 
+\cline{1-18}
+\multirow{4}{*}{2} % 1
+& \multirow{4}{*}{2} % 2
+& \multirow{2}{*}{Li} % 3
+& \cellcolor{pink} 3 % 4
+& \multirow{2}{*}{Be} % 5
+& \cellcolor{pink} 4 % 6
+& \multirow{2}{*}{B} % 7
+& \cellcolor{yellow} 5 % 8
+& \multirow{2}{*}{C} % 9
+& \cellcolor{yellow} 6 % 10
+& \multirow{2}{*}{N} % 11
+& \cellcolor{yellow} 7 % 12
+& \multirow{2}{*}{O} % 13
+& \cellcolor{yellow} 8 % 14
+& \multirow{2}{*}{F} % 15
+& \cellcolor{yellow} 9 % 16
+& \multirow{2}{*}{Ne} % 17
+& \cellcolor{yellow} 10 % 18
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+&
+& \cellcolor{pink} 6.941
+& 
+& \cellcolor{pink} 9.0122
+& 
+& \cellcolor{yellow} 10.811
+& 
+& \cellcolor{yellow} 12.011
+& 
+& \cellcolor{yellow} 14.007
+& 
+& \cellcolor{yellow} 15.999
+& 
+& \cellcolor{yellow} 18.998
+& 
+& \cellcolor{yellow} 20.179
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Lithium} 
+& \multicolumn{2}{c|}{Beryllium} 
+& \multicolumn{2}{c|}{Borum}
+& \multicolumn{2}{c|}{Carboneum}
+& \multicolumn{2}{c|}{Nitrogenium}
+& \multicolumn{2}{c|}{Oxigenium}
+& \multicolumn{2}{c|}{Fluorum}
+& \multicolumn{2}{c|}{Neon}
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Литий}
+& \multicolumn{2}{c|}{Берилий} 
+& \multicolumn{2}{c|}{Бор}
+& \multicolumn{2}{c|}{Углерод}
+& \multicolumn{2}{c|}{Азот}
+& \multicolumn{2}{c|}{Кислород}
+& \multicolumn{2}{c|}{Фтор}
+& \multicolumn{2}{c|}{Неон}
+& \multicolumn{4}{c|}{}
+\\ 
+\cline{1-18}
+\multirow{4}{*}{3} % 1
+& \multirow{4}{*}{3} % 2
+& \multirow{2}{*}{Na} % 3
+& \cellcolor{pink} 11 % 4
+& \multirow{2}{*}{Mg} % 5
+& \cellcolor{pink} 12 % 6
+& \multirow{2}{*}{Al} % 7
+& \cellcolor{yellow} 13 % 8
+& \multirow{2}{*}{Si} % 9
+& \cellcolor{yellow} 14 % 10
+& \multirow{2}{*}{P} % 11
+& \cellcolor{yellow} 15 % 12
+& \multirow{2}{*}{S} % 13
+& \cellcolor{yellow} 16 % 14
+& \multirow{2}{*}{Cl} % 15
+& \cellcolor{yellow} 17 % 16
+& \multirow{2}{*}{Ar} % 17
+& \cellcolor{yellow} 18 % 18
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+&
+& \cellcolor{pink} 22.99
+& 
+& \cellcolor{pink} 24.305
+& 
+& \cellcolor{yellow} 26.9815
+& 
+& \cellcolor{yellow} 28.086
+& 
+& \cellcolor{yellow} 30.974
+& 
+& \cellcolor{yellow} 32.066
+& 
+& \cellcolor{yellow} 35.453
+& 
+& \cellcolor{yellow} 39.948
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Natrium} 
+& \multicolumn{2}{c|}{Magnesium} 
+& \multicolumn{2}{c|}{Aluminium}
+& \multicolumn{2}{c|}{Silicium}
+& \multicolumn{2}{c|}{Phosphorus}
+& \multicolumn{2}{c|}{Sulfur}
+& \multicolumn{2}{c|}{Chlorium}
+& \multicolumn{2}{c|}{Argon}
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Натрий}
+& \multicolumn{2}{c|}{Магний} 
+& \multicolumn{2}{c|}{Алюминий}
+& \multicolumn{2}{c|}{Кремний}
+& \multicolumn{2}{c|}{Фосфор}
+& \multicolumn{2}{c|}{Сера}
+& \multicolumn{2}{c|}{Хлор}
+& \multicolumn{2}{c|}{Аргон}
+& \multicolumn{4}{c|}{}
+\\ 
+\cline{1-22}
+\multirow{8}{*}{4} % 1
+& \multirow{4}{*}{4} % 2
+& \multirow{2}{*}{K} % 3
+& \cellcolor{pink} 19 % 4
+& \multirow{2}{*}{Ca} % 5
+& \cellcolor{pink} 20 % 6
+& \cellcolor{cyan} 21 % 22
+& \multirow{2}{*}{Sc} % 7
+& \cellcolor{cyan} 22 % 8
+& \multirow{2}{*}{Ti} % 9
+& \cellcolor{cyan} 23 % 10
+& \multirow{2}{*}{V} % 11
+& \cellcolor{cyan} 24 % 12
+& \multirow{2}{*}{Cr} % 13
+& \cellcolor{cyan} 25 % 14
+& \multirow{2}{*}{Mn} % 15
+& \cellcolor{cyan} 26 % 16
+& \multirow{2}{*}{Fe} % 17
+& \cellcolor{cyan} 27 % 18
+& \multirow{2}{*}{Co} % 19
+& \cellcolor{cyan} 28 % 20
+& \multirow{2}{*}{Ni} % 21
+\\ 
+  
+&  
+&
+& \cellcolor{pink} 39.098
+& 
+& \cellcolor{pink} 40.08
+& \cellcolor{cyan} 44.956
+& 
+& \cellcolor{cyan} 47.90
+& 
+& \cellcolor{cyan} 50.941
+& 
+& \cellcolor{cyan} 51.996
+& 
+& \cellcolor{cyan} 54.938
+& 
+& \cellcolor{cyan} 55.847
+&
+& \cellcolor{cyan} 58.933
+&
+& \cellcolor{cyan} 58.70
+&
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Kalium} 
+& \multicolumn{2}{c|}{Calcium} 
+& \multicolumn{2}{c|}{Scandium}
+& \multicolumn{2}{c|}{Titanium}
+& \multicolumn{2}{c|}{Vanadium}
+& \multicolumn{2}{c|}{Chromium}
+& \multicolumn{2}{c|}{Manganum}
+& \multicolumn{2}{c|}{Ferrum}
+& \multicolumn{2}{c|}{Cobaltum}
+& \multicolumn{2}{c|}{Nikkolum}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Калий}
+& \multicolumn{2}{c|}{Кальций} 
+& \multicolumn{2}{c|}{Скандий}
+& \multicolumn{2}{c|}{Титан}
+& \multicolumn{2}{c|}{Ванадий}
+& \multicolumn{2}{c|}{Хром}
+& \multicolumn{2}{c|}{Марганец}
+& \multicolumn{2}{c|}{Железо}
+& \multicolumn{2}{c|}{Кобальт}
+& \multicolumn{2}{c|}{Никель}
+\\ 
+\cline{2-22}
+  % 1
+& \multirow{4}{*}{5} % 2
+& \cellcolor{cyan} 29 % 3
+& \multirow{2}{*}{Cu} % 4
+& \cellcolor{cyan} 30 % 5
+& \multirow{2}{*}{Zn} % 6
+& \multirow{2}{*}{Ga} % 8
+& \cellcolor{yellow} 31 % 9
+& \multirow{2}{*}{Ge} % 10
+& \cellcolor{yellow} 32 % 11
+& \multirow{2}{*}{As} % 12
+& \cellcolor{yellow} 33 % 13
+& \multirow{2}{*}{Se} % 14
+& \cellcolor{yellow} 34 % 15
+& \multirow{2}{*}{Br} % 16
+& \cellcolor{yellow} 35 % 17
+& \multirow{2}{*}{Kr} % 18
+& \cellcolor{yellow} 36
+& \multicolumn{4}{c|}{} % 19
+\\ 
+  
+&
+& \cellcolor{cyan} 63.546
+& 
+& \cellcolor{cyan} 65.39
+& 
+&  
+& \cellcolor{yellow} 69.72
+& 
+& \cellcolor{yellow} 72.59
+& 
+& \cellcolor{yellow} 74.992
+& 
+& \cellcolor{yellow} 78.96
+& 
+& \cellcolor{yellow} 79.904
+& 
+& \cellcolor{yellow} 83.80
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Cuprum} 
+& \multicolumn{2}{c|}{Zincum} 
+& \multicolumn{2}{c|}{Gallium}
+& \multicolumn{2}{c|}{Germanium}
+& \multicolumn{2}{c|}{Arsenicum}
+& \multicolumn{2}{c|}{Selenium}
+& \multicolumn{2}{c|}{Bromum}
+& \multicolumn{2}{c|}{Krypton}
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Медь}
+& \multicolumn{2}{c|}{Цинк} 
+& \multicolumn{2}{c|}{Галлий}
+& \multicolumn{2}{c|}{Германий}
+& \multicolumn{2}{c|}{Мышьяк}
+& \multicolumn{2}{c|}{Селен}
+& \multicolumn{2}{c|}{Бром}
+& \multicolumn{2}{c|}{Криптон}
+& \multicolumn{4}{c|}{}
+\\ 
+\cline{1-22}
+\multirow{8}{*}{5} % 1
+& \multirow{4}{*}{6} % 2
+& \multirow{2}{*}{Rb} % 3
+& \cellcolor{pink} 37 % 4
+& \multirow{2}{*}{Sr} % 5
+& \cellcolor{pink} 38 % 6
+& \cellcolor{cyan} 39 % 22
+& \multirow{2}{*}{Y} % 7
+& \cellcolor{cyan} 40 % 8
+& \multirow{2}{*}{Zr} % 9
+& \cellcolor{cyan} 41 % 10
+& \multirow{2}{*}{Nb} % 11
+& \cellcolor{cyan} 42 % 12
+& \multirow{2}{*}{Mo} % 13
+& \cellcolor{cyan} 43 % 14
+& \multirow{2}{*}{Tc} % 15
+& \cellcolor{cyan} 44 % 16
+& \multirow{2}{*}{Ru} % 17
+& \cellcolor{cyan} 45 % 18
+& \multirow{2}{*}{Rh} % 19
+& \cellcolor{cyan} 46 % 20
+& \multirow{2}{*}{Pd} % 21
+\\ 
+  
+&  
+&
+& \cellcolor{pink} 85.468
+& 
+& \cellcolor{pink} 87.62
+& \cellcolor{cyan} 88.906
+& 
+& \cellcolor{cyan} 91.22
+& 
+& \cellcolor{cyan} 92.906
+& 
+& \cellcolor{cyan} 95.94
+& 
+& \cellcolor{cyan} 97.91
+& 
+& \cellcolor{cyan} 101.07
+&
+& \cellcolor{cyan} 102.96
+&
+& \cellcolor{cyan} 106.4
+&
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Rubidium} 
+& \multicolumn{2}{c|}{Strontium} 
+& \multicolumn{2}{c|}{Yttrium}
+& \multicolumn{2}{c|}{Zirkonium}
+& \multicolumn{2}{c|}{Niobium}
+& \multicolumn{2}{c|}{Molybdaenum}
+& \multicolumn{2}{c|}{Technetium}
+& \multicolumn{2}{c|}{Ruthhenium}
+& \multicolumn{2}{c|}{Rhodium}
+& \multicolumn{2}{c|}{Palladium}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Рубидий}
+& \multicolumn{2}{c|}{Стронций} 
+& \multicolumn{2}{c|}{Иттрий}
+& \multicolumn{2}{c|}{Цирконий}
+& \multicolumn{2}{c|}{Ниобий}
+& \multicolumn{2}{c|}{Молибден}
+& \multicolumn{2}{c|}{Технеций}
+& \multicolumn{2}{c|}{Рутений}
+& \multicolumn{2}{c|}{Родий}
+& \multicolumn{2}{c|}{Палладий}
+\\ 
+\cline{2-22}
+  % 1
+& \multirow{4}{*}{7} % 2
+& \cellcolor{cyan} 47 % 22
+& \multirow{2}{*}{Ag} % 3
+& \cellcolor{cyan} 48 % 4
+& \multirow{2}{*}{Cd} % 5
+& \multirow{2}{*}{In} % 7
+& \cellcolor{yellow} 49 % 8
+& \multirow{2}{*}{Sn} % 9
+& \cellcolor{yellow} 50 % 10
+& \multirow{2}{*}{Sb} % 11
+& \cellcolor{yellow} 51 % 12
+& \multirow{2}{*}{Te} % 13
+& \cellcolor{yellow} 52 % 14
+& \multirow{2}{*}{I} % 15
+& \cellcolor{yellow} 53 % 16
+& \multirow{2}{*}{Xe} % 17
+& \cellcolor{yellow} 54 % 18
+& \multicolumn{4}{c|}{} % 19
+\\ 
+  
+&
+& \cellcolor{cyan} 107.868
+& 
+& \cellcolor{cyan} 112.41
+& 
+&  
+& \cellcolor{yellow} 114.82
+& 
+& \cellcolor{yellow} 118.71
+& 
+& \cellcolor{yellow} 121.75
+& 
+& \cellcolor{yellow} 127.60
+& 
+& \cellcolor{yellow} 126.9045
+& 
+& \cellcolor{yellow} 131.29
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Argentum} 
+& \multicolumn{2}{c|}{Cadmium} 
+& \multicolumn{2}{c|}{Indium}
+& \multicolumn{2}{c|}{Stannum}
+& \multicolumn{2}{c|}{Stibium}
+& \multicolumn{2}{c|}{Tellurium}
+& \multicolumn{2}{c|}{Iodum}
+& \multicolumn{2}{c|}{Xenon}
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Серебро}
+& \multicolumn{2}{c|}{Кадмий} 
+& \multicolumn{2}{c|}{Индий}
+& \multicolumn{2}{c|}{Олово}
+& \multicolumn{2}{c|}{Сурьма}
+& \multicolumn{2}{c|}{Теллур}
+& \multicolumn{2}{c|}{Йод}
+& \multicolumn{2}{c|}{Ксенон}
+& \multicolumn{4}{c|}{}
+\\ 
+\cline{1-22}
+\multirow{8}{*}{6} % 1
+& \multirow{4}{*}{8} % 2
+& \multirow{2}{*}{Cs} % 3
+& \cellcolor{pink} 55 % 4
+& \multirow{2}{*}{Ba} % 5
+& \cellcolor{pink} 56 % 6
+& \cellcolor{cyan} 57 % 22
+& \multirow{2}{*}{La*} % 7
+& \cellcolor{cyan} 72 % 8
+& \multirow{2}{*}{Hf} % 9
+& \cellcolor{cyan} 73 % 10
+& \multirow{2}{*}{Ta} % 11
+& \cellcolor{cyan} 74 % 12
+& \multirow{2}{*}{W} % 13
+& \cellcolor{cyan} 75 % 14
+& \multirow{2}{*}{Re} % 15
+& \cellcolor{cyan} 76 % 16
+& \multirow{2}{*}{Os} % 17
+& \cellcolor{cyan} 77 % 18
+& \multirow{2}{*}{Ir} % 19
+& \cellcolor{cyan} 78 % 20
+& \multirow{2}{*}{Pt} % 21
+\\ 
+  
+&  
+&
+& \cellcolor{pink} 132.905
+& 
+& \cellcolor{pink} 137.33
+& \cellcolor{cyan} 138.9055
+& 
+& \cellcolor{cyan} 178.49
+& 
+& \cellcolor{cyan} 180.9479
+& 
+& \cellcolor{cyan} 183.85
+& 
+& \cellcolor{cyan} 186.207
+& 
+& \cellcolor{cyan} 190.2
+&
+& \cellcolor{cyan} 192.22
+&
+& \cellcolor{cyan} 195.08
+&
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Cesium} 
+& \multicolumn{2}{c|}{Barium} 
+& \multicolumn{2}{c|}{Lanthanum}
+& \multicolumn{2}{c|}{Hafnium}
+& \multicolumn{2}{c|}{Tantalum}
+& \multicolumn{2}{c|}{Wolframium}
+& \multicolumn{2}{c|}{Rhenium}
+& \multicolumn{2}{c|}{Osmium}
+& \multicolumn{2}{c|}{Iridium}
+& \multicolumn{2}{c|}{Platinum}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Цезий}
+& \multicolumn{2}{c|}{Барий} 
+& \multicolumn{2}{c|}{Лантан}
+& \multicolumn{2}{c|}{Гафний}
+& \multicolumn{2}{c|}{Тантал}
+& \multicolumn{2}{c|}{Вольфрам}
+& \multicolumn{2}{c|}{Рений}
+& \multicolumn{2}{c|}{Осьмий}
+& \multicolumn{2}{c|}{Иридий}
+& \multicolumn{2}{c|}{Платина}
+\\ 
+\cline{2-22}
+  % 1
+& \multirow{4}{*}{9} % 2
+& \cellcolor{cyan} 79 % 6
+& \multirow{2}{*}{Au} % 3
+& \cellcolor{cyan} 80 % 4
+& \multirow{2}{*}{Hg} % 5
+& \multirow{2}{*}{Tl} % 7
+& \cellcolor{yellow} 81 % 8
+& \multirow{2}{*}{Pb} % 9
+& \cellcolor{yellow} 82 % 10
+& \multirow{2}{*}{Bi} % 11
+& \cellcolor{yellow} 83 % 12
+& \multirow{2}{*}{Po} % 13
+& \cellcolor{yellow} 84 % 14
+& \multirow{2}{*}{At} % 15
+& \cellcolor{yellow} 85 % 16
+& \multirow{2}{*}{Rn} % 17
+& \cellcolor{yellow} 86 % 18
+& \multicolumn{4}{c|}{} % 19
+\\ 
+  
+&
+& \cellcolor{cyan} 196.967
+& 
+& \cellcolor{cyan} 200.59
+& 
+&  
+& \cellcolor{yellow} 204.38
+& 
+& \cellcolor{yellow} 207.19
+& 
+& \cellcolor{yellow} 208.980
+& 
+& \cellcolor{yellow} 209.98
+& 
+& \cellcolor{yellow} 209.99
+& 
+& \cellcolor{yellow} [222]
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Aurum} 
+& \multicolumn{2}{c|}{Hydrargyrum} 
+& \multicolumn{2}{c|}{Thallium}
+& \multicolumn{2}{c|}{Plumbum}
+& \multicolumn{2}{c|}{Bismuthum}
+& \multicolumn{2}{c|}{Polonium}
+& \multicolumn{2}{c|}{Astatium}
+& \multicolumn{2}{c|}{Radon}
+& \multicolumn{4}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Золото}
+& \multicolumn{2}{c|}{Ртуть} 
+& \multicolumn{2}{c|}{Таллий}
+& \multicolumn{2}{c|}{Свинец}
+& \multicolumn{2}{c|}{Висмут}
+& \multicolumn{2}{c|}{Полоний}
+& \multicolumn{2}{c|}{Астат}
+& \multicolumn{2}{c|}{Радон}
+& \multicolumn{4}{c|}{}
+\\ 
+\cline{1-22}
+\multirow{4}{*}{7} % 1
+& \multirow{4}{*}{10} % 2
+& \multirow{2}{*}{Fr} % 3
+& \cellcolor{pink} 87 % 4
+& \multirow{2}{*}{Ra} % 5
+& \cellcolor{pink} 88 % 6
+& \cellcolor{cyan} 89 % 22
+& \multirow{2}{*}{Ac**} % 7
+& \cellcolor{cyan} 104 % 8
+& \multirow{2}{*}{Rf} % 9
+& \cellcolor{cyan} 105 % 10
+& \multirow{2}{*}{Db} % 11
+& \cellcolor{cyan} 106 % 12
+& \multirow{2}{*}{Sg} % 13
+& \cellcolor{cyan} 107 % 14
+& \multirow{2}{*}{Bh} % 15
+& \cellcolor{cyan} 108 % 16
+& \multirow{2}{*}{Hs} % 17
+& \cellcolor{cyan} 109 % 18
+& \multirow{2}{*}{Mt} % 19
+& \cellcolor{cyan} 110 % 20
+&  % 21
+\\ 
+  
+&  
+&
+& \cellcolor{pink} [223]
+& 
+& \cellcolor{pink} [226]
+& \cellcolor{cyan} [227]
+& 
+& \cellcolor{cyan} [261]
+& 
+& \cellcolor{cyan} [262]
+& 
+& \cellcolor{cyan} [263]
+& 
+& \cellcolor{cyan} [262]
+& 
+& \cellcolor{cyan} [265]
+&
+& \cellcolor{cyan} [266]
+&
+& \cellcolor{cyan} [269]
+&
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Francium} 
+& \multicolumn{2}{c|}{Radium} 
+& \multicolumn{2}{c|}{Actinium}
+& \multicolumn{2}{c|}{Rutherfordium}
+& \multicolumn{2}{c|}{Dubnium}
+& \multicolumn{2}{c|}{Seaborgium}
+& \multicolumn{2}{c|}{Bohrium}
+& \multicolumn{2}{c|}{Hassium}
+& \multicolumn{2}{c|}{Meitnerium}
+& \multicolumn{2}{c|}{}
+\\ 
+  
+&  
+& \multicolumn{2}{c|}{Франций}
+& \multicolumn{2}{c|}{Радий} 
+& \multicolumn{2}{c|}{Актиний}
+& \multicolumn{2}{c|}{Резерфордий}
+& \multicolumn{2}{c|}{Дубний}
+& \multicolumn{2}{c|}{Сиборгий}
+& \multicolumn{2}{c|}{Борий}
+& \multicolumn{2}{c|}{Хассий}
+& \multicolumn{2}{c|}{Мейтнерий}
+& \multicolumn{2}{c|}{}
+\\ 
+\cline{1-22}
+\end{tabularx}
+\end{document}

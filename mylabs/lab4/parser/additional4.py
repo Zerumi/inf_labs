@@ -142,7 +142,9 @@ def to_markdown_str(elements_xml, current_head_count=1):
                 if element['children']:
                     result += to_markdown_str(element['children'])
                 index += 1
-        result += '\n\n'
+                if matched_non_single_element:
+                    result += '\n'
+        result += '\n'
     else:
         for element in elements_xml:
             if len(element['children']) > 1:
@@ -155,8 +157,10 @@ def to_markdown_str(elements_xml, current_head_count=1):
                 result += '| ' + element['name'] + ' | ' + element['text'] + ' |\n'  # text
             if element['children']:
                 result += to_markdown_str(element['children'], current_head_count + 1)
-        result += '\n\n'
-    return result
+            if len(element['children']) > 1:
+                result += '\n'
+        result += '\n'
+    return result.rstrip()
 
 
 def union_by_name(list_data):
